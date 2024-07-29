@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -6,17 +7,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int x = 4;
 
         for (int t = 0; t < N; t++) {
 
             int M = sc.nextInt();
-            Integer[][] valores = new Integer[M][M];
+            BigInteger[][] valores = new BigInteger[M][M];
 
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < M; j++) {
-                    int valor = sc.nextInt();
-                    valores[i][j] = valor * valor;
+                    BigInteger valor = sc.nextBigInteger();
+                    valores[i][j] = valor.multiply(valor);
                 }
             }
 
@@ -24,7 +24,7 @@ public class Main {
             for (int j = 0; j < M; j++) {
                 int larguraMaxima = 0;
                 for (int i = 0; i < M; i++) {
-                    int largura = Integer.toString(valores[i][j]).length();
+                    int largura = valores[i][j].toString().length();
                     if (largura > larguraMaxima) {
                         larguraMaxima = largura;
                     }
@@ -32,7 +32,7 @@ public class Main {
                 larguraMaximaColuna[j] = larguraMaxima;
             }
 
-            System.out.println("Quadrado da matriz #" + x + ":");
+            System.out.println("Quadrado da matriz #" + (t + 4) + ":");
 
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < M; j++) {
